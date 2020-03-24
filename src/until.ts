@@ -5,7 +5,9 @@
  */
 export const until = async <DataType = unknown, ErrorType = Error>(promise: () => Promise<DataType>): Promise<[ErrorType, DataType]> => {
   try {
-    const data = await promise()
+    const data = await promise().catch((error) => {
+      throw error
+    })
     return [null, data]
   } catch (error) {
     return [error, null]
