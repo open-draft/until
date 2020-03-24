@@ -3,8 +3,9 @@
   "compilerOptions": {
     "module": "CommonJS",
     "target": "ESNext",
+    "types": ["jest"],
     "outDir": "lib",
     "declaration": true,
   },
-  "files": ["src/index"]
+  "files": ["src/index.ts"]
 }
