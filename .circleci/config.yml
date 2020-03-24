@@ -1,32 +1,18 @@
-ersion: 2
+
+version: 2.1
+orbs:
+  node: circleci/node@1.1.6
 jobs:
-  build:
-    working_directory: ~/release
-    docker:
-      - image: circleci/node:lts
-        environment:
-          TERM: xterm
+  build-and-test:
+    executor:
+      name: node/default
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - v1-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
-      - run:
-          name: 'Environment'
-          command: |
-            node --version
-            npm --version
-            yarn --version
-      - run:
-          name: Installing dependencies
-          command: yarn --frozen-lockfile
-      - save_cache:
-          key: v1-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
-          paths:
-            - .cache
-      - run:
-          name: Build
-          command: yarn build
-      - run:
-          name: Tests
-          command: yarn test
+      - node/with-cache:
+          steps:
+            - run: yarn --frozen-lockfile
+            - run: yarn test
+workflows:
+    build-and-test:
+      jobs:
+        - build-and-test
