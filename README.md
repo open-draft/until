@@ -1,3 +1,5 @@
+[![Build status](https://circleci.com/gh/open-draft/until.svg?style=shield)](https://circleci.com/gh/open-draft/until)
+
 # `until`
 
 Gracefully handle a Promise using async/await.
