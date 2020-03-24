@@ -1,0 +1,10 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "module": "CommonJS",
+    "target": "ESNext",
+    "outDir": "lib",
+    "declaration": true,
+  },
+  "files": ["src/index"]
+}

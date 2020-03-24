@@ -1,0 +1,22 @@
+{
+  "name": "@open-draft/until",
+  "version": "1.0.0",
+  "description": "Gracefully handle a Promise using async/await.",
+  "main": "lib/index.js",
+  "repository": "git@github.com:open-draft/until.git",
+  "author": "Artem Zakharchenko <kettanaito@gmail.com>",
+  "license": "MIT",
+  "files": [
+    "README.md",
+    "lib"
+  ],
+  "devDependencies": {
+    "jest": "^25.1.0",
+    "rollup": "^2.1.0",
+    "ts-jest": "^25.2.1",
+    "typescript": "^3.8.3"
+  },
+  "scripts": {
+    "build": "tsc --build tsconfig.json"
+  }
+}
