@@ -1,0 +1,32 @@
+ersion: 2
+jobs:
+  build:
+    working_directory: ~/release
+    docker:
+      - image: circleci/node:lts
+        environment:
+          TERM: xterm
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      - run:
+          name: 'Environment'
+          command: |
+            node --version
+            npm --version
+            yarn --version
+      - run:
+          name: Installing dependencies
+          command: yarn --frozen-lockfile
+      - save_cache:
+          key: v1-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          paths:
+            - .cache
+      - run:
+          name: Build
+          command: yarn build
+      - run:
+          name: Tests
+          command: yarn test
