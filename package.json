@@ -1,6 +1,6 @@
 {
   "name": "@open-draft/until",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Gracefully handle a Promise using async/await.",
   "main": "lib/index.js",
   "repository": "open-draft/until",
