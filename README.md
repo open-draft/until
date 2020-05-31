@@ -1,3 +1,4 @@
+[![Latest release](https://img.shields.io/npm/v/@open-draft/until.svg)](https://www.npmjs.com/package/@open-draft/until)
 [![Build status](https://circleci.com/gh/open-draft/until.svg?style=shield)](https://circleci.com/gh/open-draft/until)
 
 # `until`
