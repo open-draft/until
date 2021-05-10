@@ -1,7 +1,7 @@
 /**
  * Gracefully handles a given Promise factory.
  * @example
- * cosnt [error, data] = await until(() => asyncAction())
+ * const [error, data] = await until(() => asyncAction())
  */
 export const until = async <DataType = unknown, ErrorType = Error>(promise: () => Promise<DataType>): Promise<[ErrorType, DataType]> => {
   try {
