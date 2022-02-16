@@ -3,7 +3,10 @@
  * @example
  * const [error, data] = await until(() => asyncAction())
  */
-export const until = async <DataType = unknown, ErrorType = Error>(
+export const until = async <
+  ErrorType extends any = Error,
+  DataType extends any = unknown,
+>(
   promise: () => Promise<DataType>,
 ): Promise<
   { error: ErrorType; data: null } | { error: null; data: DataType }
