@@ -17,6 +17,7 @@
     "typescript": "^4.2.4"
   },
   "scripts": {
+    "start": "tsc -w",
     "test": "jest",
     "build": "tsc --build tsconfig.json",
     "prepublishOnly": "yarn test && yarn build"
