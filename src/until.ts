@@ -1,3 +1,13 @@
+export type AsyncTuple<
+  ErrorType extends any = Error,
+  DataType extends any = unknown,
+> =
+  | {
+      error: ErrorType
+      data: null
+    }
+  | { error: null; data: DataType }
+
 /**
  * Gracefully handles a given Promise factory.
  * @example
@@ -8,9 +18,7 @@ export const until = async <
   DataType extends any = unknown,
 >(
   promise: () => Promise<DataType>,
-): Promise<
-  { error: ErrorType; data: null } | { error: null; data: DataType }
-> => {
+): Promise<AsyncTuple<ErrorType, DataType>> => {
   try {
     const data = await promise().catch((error) => {
       throw error
