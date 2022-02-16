@@ -1,21 +1,19 @@
-import { until } from './until'
+import { AsyncTuple, until } from './until'
 
 describe('until', () => {
   describe('given a callback function that returns a value', () => {
-    let payload: [Error, string]
+    let result: AsyncTuple
 
     beforeAll(async () => {
-      payload = await until(() => Promise.resolve('value'))
+      result = await until(() => Promise.resolve('value'))
     })
 
     it('should return explicit null as the error', () => {
-      const [error] = payload
-      expect(error).toBe(null)
+      expect(result.error).toBe(null)
     })
 
     it('should return data', () => {
-      const [, data] = payload
-      expect(data).toEqual('value')
+      expect(result.data).toEqual('value')
     })
   })
 
@@ -33,32 +31,30 @@ describe('until', () => {
     })
 
     it('should return caught error as error', async () => {
-      const [error] = await run()
+      const { error } = await run()
       expect(error).toEqual(customError)
     })
 
     it('should return explicit null as data', async () => {
-      const [, data] = await run()
+      const { data } = await run()
       expect(data).toBe(null)
     })
   })
 
   describe('given a Promise that rejects', () => {
-    let payload: [Error, string]
+    let result: AsyncTuple
 
     beforeAll(async () => {
-      payload = await until(() => Promise.reject(new Error('Error message')))
+      result = await until(() => Promise.reject(new Error('Error message')))
     })
 
     it('should return the rejected error', () => {
-      const [error] = payload
-      expect(error).toBeInstanceOf(Error)
-      expect(error).toHaveProperty('message', 'Error message')
+      expect(result.error).toBeInstanceOf(Error)
+      expect(result.error).toHaveProperty('message', 'Error message')
     })
 
     it('should return explicit null as data', () => {
-      const [, data] = payload
-      expect(data).toBeNull()
+      expect(result.data).toBeNull()
     })
   })
 })
