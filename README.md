@@ -88,6 +88,66 @@ async function(id: string) {
 }
 ```
 
+## Frequently asked questions
+
+### Why does `until` accept a function and not a `Promise` directly?
+
+This has been intentionally introduced to await a single logical unit as opposed to a single `Promise`.
+
+```js
+// Notice how a single "unil" invocation can handle
+// a rather complex piece of logic. This way any rejections
+// or exceptions happening within the given function
+// can be handled via the same "error".
+const { error, data } = until(async () => {
+  const user = await fetchUser()
+  const nextUser = normalizeUser(user)
+  const transaction = await saveModel('user', user)
+
+  invariant(transaction.status === 'OK', 'Saving user failed')
+
+  return transaction.result
+})
+
+if (error) {
+  // Handle any exceptions happened within the function.
+}
+```
+
+### Why does `until` return an object and not an array?
+
+The `until` function used to return an array of shape `[error, data]` prior to `2.0.0`. That has been changed, however, to get proper type-safety using discriminated union type.
+
+Compare these two examples:
+
+```ts
+const [error, data] = await until(() => action())
+
+if (error) {
+  return null
+}
+
+// Data still has ambiguous "DataType | null" type here
+// even after you've checked and handled the "error" above.
+console.log(data)
+```
+
+```ts
+const result = await until(() => action())
+
+// At this point, "data" is ambiguous "DataType | null"
+// which is correct, as you haven't checked nor handled the "error".
+
+if (result.error) {
+  return null
+}
+
+// Data is strict "DataType" since you've handled the "error" above.
+console.log(result.data)
+```
+
+> It's crucial to keep the entire result of the `Promise` in a single variable and not destructure it. TypeScript will always keep the type of `error` and `data` as it was upon destructuring, ignoring any type guards you may perform later on.
+
 ## Special thanks
 
 - [giuseppegurgone](https://twitter.com/giuseppegurgone) for the discussion about the original `until` API.
