@@ -42,6 +42,8 @@ This library encapsulates the `try`/`catch` error handling in a utility function
 
 ```bash
 npm install @open-draft/until
+# or
+yarn add @open-draft/until
 ```
 
 ### Usage
@@ -50,13 +52,13 @@ npm install @open-draft/until
 import { until } from '@open-draft/until'
 
 async function(id) {
-  const [error, user] = await until(() => fetchUser(id))
+  const { error, data } = await until(() => fetchUser(id))
 
   if (error) {
     return handleError(error)
   }
 
-  return user
+  return data
 }
 ```
 
@@ -76,16 +78,16 @@ interface UserFetchError {
 }
 
 async function(id: string) {
-  const [error, user] = await until<User, UserFetchError>(() => fetchUser(id))
+  const { error, data } = await until<UserFetchError, User>(() => fetchUser(id))
 
   if (error) {
     handleError(error.type, error.message)
   }
 
-  return user.firstName
+  return data.firstName
 }
 ```
 
 ## Special thanks
 
-- [giuseppegurgone](https://twitter.com/giuseppegurgone) for discussing the original `until` API
+- [giuseppegurgone](https://twitter.com/giuseppegurgone) for the discussion about the original `until` API.
