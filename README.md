@@ -95,7 +95,7 @@ async function(id: string) {
 This has been intentionally introduced to await a single logical unit as opposed to a single `Promise`.
 
 ```js
-// Notice how a single "unil" invocation can handle
+// Notice how a single "until" invocation can handle
 // a rather complex piece of logic. This way any rejections
 // or exceptions happening within the given function
 // can be handled via the same "error".
