@@ -11,7 +11,7 @@ export type AsyncTuple<
 /**
  * Gracefully handles a given Promise factory.
  * @example
- * const [error, data] = await until(() => asyncAction())
+ * const { error, data } = await until(() => asyncAction())
  */
 export const until = async <
   ErrorType extends any = Error,
