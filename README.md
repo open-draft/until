@@ -42,8 +42,6 @@ This library encapsulates the `try`/`catch` error handling in a utility function
 
 ```bash
 npm install @open-draft/until
-# or
-yarn add @open-draft/until
 ```
 
 ### Usage
