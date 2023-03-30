@@ -30,6 +30,7 @@
   "scripts": {
     "start": "tsc -w",
     "test": "jest",
-    "build": "tsup"
+    "build": "tsup",
+    "release": "release publish"
   }
 }
