@@ -30,7 +30,6 @@
   "scripts": {
     "start": "tsc -w",
     "test": "jest",
-    "build": "tsup",
-    "prepublishOnly": "pnpm test && pnpm build"
+    "build": "tsup"
   }
 }
