@@ -2,13 +2,14 @@
   "name": "@open-draft/until",
   "version": "2.0.0",
   "description": "Gracefully handle a Promise using async/await.",
-  "main": "lib/index.js",
-  "module": "lib/index.mjs",
-  "typings": "lib/index.d.ts",
+  "main": "./lib/index.js",
+  "module": "./lib/index.mjs",
+  "types": "./lib/index.d.ts",
   "exports": {
     ".": {
       "types": "./lib/index.d.ts",
       "require": "./lib/index.js",
+      "import": "./lib/index.mjs",
       "default": "./lib/index.mjs"
     }
   },
