@@ -1,3 +1,3 @@
 module.exports = {
-  release: 'pnpm publish --no-git-checks'
+  release: 'pnpm publish --no-git-checks --access public'
 }
