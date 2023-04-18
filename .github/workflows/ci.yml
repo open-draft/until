@@ -30,7 +30,7 @@ jobs:
         run: pnpm build
 
       - name: Release
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main'
         run: pnpm release
         env:
           GITHUB_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
