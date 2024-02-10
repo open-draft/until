@@ -18,7 +18,7 @@ function getUser(id) {
 In case `fetchUser()` throws an error, the entire `getUser()` function's scope will terminate. Because of this, it's recommended to implement error handling using `try`/`catch` block wrapping `await` expressions:
 
 ```js
-function getUser(id)
+function getUser(id){
   let data = null
 
   try {
@@ -48,7 +48,7 @@ npm install @open-draft/until
 ```js
 import { until } from '@open-draft/until'
 
-async function(id) {
+async function getUserById(id) {
   const { error, data } = await until(() => fetchUser(id))
 
   if (error) {
@@ -74,11 +74,11 @@ interface UserFetchError {
   message?: string
 }
 
-async function(id: string) {
+async function getUserById(id: string) {
   const { error, data } = await until<UserFetchError, User>(() => fetchUser(id))
 
   if (error) {
-    handleError(error.type, error.message)
+    return handleError(error.type, error.message)
   }
 
   return data.firstName
