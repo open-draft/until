@@ -130,20 +130,18 @@ console.log(data)
 ```
 
 ```ts
-const result = await until(() => action())
+const { data, error } = await until(() => action())
 
 // At this point, "data" is ambiguous "DataType | null"
-// which is correct, as you haven't checked nor handled the "error".
+// which is correct, as you haven't checked or handled the "error".
 
-if (result.error) {
+if (error) {
   return null
 }
 
 // Data is strict "DataType" since you've handled the "error" above.
-console.log(result.data)
+console.log(data)
 ```
-
-> It's crucial to keep the entire result of the `Promise` in a single variable and not destructure it. TypeScript will always keep the type of `error` and `data` as it was upon destructuring, ignoring any type guards you may perform later on.
 
 ## Special thanks
 
