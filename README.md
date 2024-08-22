@@ -9,7 +9,7 @@ Gracefully handle a Promise using `async`/`await`.
 With the addition of `async`/`await` keywords in ECMAScript 2017 the handling of Promises became much easier. However, one must keep in mind that the `await` keyword provides no standard error handling API. Consider this usage:
 
 ```js
-function getUser(id) {
+async function getUser(id) {
   const data = await fetchUser(id)
   // Work with "data"...
 }
@@ -18,7 +18,7 @@ function getUser(id) {
 In case `fetchUser()` throws an error, the entire `getUser()` function's scope will terminate. Because of this, it's recommended to implement error handling using `try`/`catch` block wrapping `await` expressions:
 
 ```js
-function getUser(id){
+async function getUser(id){
   let data = null
 
   try {
