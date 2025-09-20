@@ -2,10 +2,9 @@ import { defineConfig } from 'tsup'
 
 export default defineConfig([
   {
-    name: 'main',
     entry: ['./src/index.ts'],
     outDir: './lib',
-    format: ['esm', 'cjs'],
+    format: ['esm'],
     sourcemap: true,
     clean: true,
     bundle: true,

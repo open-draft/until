@@ -1,11 +1,14 @@
 {
-  "compileOnSave": true,
+  "include": ["src"],
+  "exclude": ["node_modules", "lib"],
   "compilerOptions": {
-    "module": "CommonJS",
-    "target": "ESNext",
-    "types": ["jest"],
-    "outDir": "lib",
-    "declaration": true,
-  },
-  "files": ["src/index.ts"]
+    "strict": true,
+    "skipLibCheck": true,
+    "module": "nodenext",
+    "target": "esnext",
+    "types": ["vitest/globals"],
+    "moduleResolution": "nodenext",
+    "verbatimModuleSyntax": true,
+    "noUncheckedIndexedAccess": true
+  }
 }
