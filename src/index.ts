@@ -1,30 +1,26 @@
-export type AsyncTuple<
-  ErrorType extends any = Error,
-  DataType extends any = unknown,
-> =
-  | {
-      error: ErrorType
-      data: null
-    }
-  | { error: null; data: DataType }
+export type UntilResult<RejectionReason, ResolveData> =
+  | [reason: RejectionReason, data: null]
+  | [reason: null, data: ResolveData]
 
 /**
- * Gracefully handles a given Promise factory.
+ * Gracefully handles a callback that returns a promise.
+ *
  * @example
- * const { error, data } = await until(() => asyncAction())
+ * await until(() => Promise.resolve(123))
+ * // [null, 123]
+ *
+ * await until(() => Promise.reject(new Error('Oops!')))
+ * // [new Error('Oops!'), null]
  */
-export const until = async <
-  ErrorType extends any = Error,
-  DataType extends any = unknown,
->(
-  promise: () => Promise<DataType>,
-): Promise<AsyncTuple<ErrorType, DataType>> => {
+export async function until<RejectionReason = unknown, ResolveData = unknown>(
+  callback: () => Promise<ResolveData>,
+): Promise<UntilResult<RejectionReason, ResolveData>> {
   try {
-    const data = await promise().catch((error) => {
+    const data = await callback().catch((error) => {
       throw error
     })
-    return { error: null, data }
-  } catch (error) {
-    return { error, data: null }
+    return [null, data]
+  } catch (error: any) {
+    return [error, null]
   }
 }
