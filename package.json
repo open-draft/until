@@ -5,7 +5,10 @@
   "description": "Gracefully handle a Promise using async/await.",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
-  "repository": "open-draft/until",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/open-draft/until.git"
+  },
   "author": "Artem Zakharchenko <kettanaito@gmail.com>",
   "license": "MIT",
   "files": [
