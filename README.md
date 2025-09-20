@@ -1,3 +1,5 @@
+> ⚠️ **This package has been re-published as [`until-async`](https://www.npmjs.com/package/until-async)**. Please update to that package instead as it will receive updates and fixes from now on. Thank you.
+
 # `until`
 
 Gracefully handle a Promise using `async`/`await`.
