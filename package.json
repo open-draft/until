@@ -11,15 +11,28 @@
       "default": "./lib/index.js"
     }
   },
+  "homepage": "https://github.com/open-draft/until",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/open-draft/until.git"
   },
-  "author": "Artem Zakharchenko <kettanaito@gmail.com>",
+  "author": {
+    "name": "Artem Zakharchenko",
+    "url": "https://github.com/kettanaito"
+  },
   "license": "MIT",
+  "funding": "https://github.com/sponsors/kettanaito",
   "files": [
     "lib",
     "src"
+  ],
+  "keywords": [
+    "async",
+    "promise",
+    "handle",
+    "gracefully",
+    "tuple",
+    "util"
   ],
   "devDependencies": {
     "@ossjs/release": "^0.8.1",
