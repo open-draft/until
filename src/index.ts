@@ -12,7 +12,7 @@ export type UntilResult<RejectionReason, ResolveData> =
  * await until(() => Promise.reject(new Error('Oops!')))
  * // [new Error('Oops!'), null]
  */
-export async function until<RejectionReason = unknown, ResolveData = unknown>(
+export async function until<RejectionReason = Error, ResolveData = unknown>(
   callback: () => Promise<ResolveData>,
 ): Promise<UntilResult<RejectionReason, ResolveData>> {
   try {
