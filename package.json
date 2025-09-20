@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "name": "@open-draft/until",
+  "name": "until-async",
   "version": "3.0.1",
   "description": "Gracefully handle a Promise using async/await.",
   "main": "./lib/index.js",
@@ -11,10 +11,10 @@
       "default": "./lib/index.js"
     }
   },
-  "homepage": "https://github.com/open-draft/until",
+  "homepage": "https://github.com/kettanaito/until-async",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/open-draft/until.git"
+    "url": "git+https://github.com/kettanaito/until-async.git"
   },
   "author": {
     "name": "Artem Zakharchenko",
