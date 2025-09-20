@@ -11,10 +11,10 @@
       "default": "./lib/index.js"
     }
   },
-  "homepage": "https://github.com/open-draft/until-async",
+  "homepage": "https://github.com/kettanaito/until-async",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/open-draft/until-async.git"
+    "url": "git+https://github.com/kettanaito/until-async.git"
   },
   "author": {
     "name": "Artem Zakharchenko",
