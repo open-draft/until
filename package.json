@@ -4,16 +4,7 @@
   "version": "2.1.0",
   "description": "Gracefully handle a Promise using async/await.",
   "main": "./lib/index.js",
-  "module": "./lib/index.mjs",
   "types": "./lib/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./lib/index.d.ts",
-      "require": "./lib/index.js",
-      "import": "./lib/index.mjs",
-      "default": "./lib/index.mjs"
-    }
-  },
   "repository": "open-draft/until",
   "author": "Artem Zakharchenko <kettanaito@gmail.com>",
   "license": "MIT",
@@ -23,14 +14,15 @@
   ],
   "devDependencies": {
     "@ossjs/release": "^0.8.1",
-    "tsup": "^8.5.0",
+    "@rolldown/binding-darwin-arm64": "1.0.0-beta.38",
+    "tsdown": "^0.15.3",
     "typescript": "^5.9.2",
     "vitest": "^3.2.4"
   },
   "scripts": {
-    "start": "tsc -w",
+    "dev": "tsdown -w",
     "test": "vitest",
-    "build": "tsup",
+    "build": "tsdown",
     "release": "release publish"
   }
 }

@@ -1,4 +1,4 @@
-import { defineConfig } from 'tsup'
+import { defineConfig } from 'tsdown'
 
 export default defineConfig([
   {
@@ -6,8 +6,5 @@ export default defineConfig([
     outDir: './lib',
     format: ['esm'],
     sourcemap: true,
-    clean: true,
-    bundle: true,
-    dts: true,
   },
 ])
