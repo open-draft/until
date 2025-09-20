@@ -39,6 +39,9 @@ jobs:
       - name: Build
         run: pnpm build
 
+      - name: Lint
+        run: pnpm lint
+
       - name: Release
         if: github.ref == 'refs/heads/main'
         run: pnpm release
