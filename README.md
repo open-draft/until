@@ -1,4 +1,4 @@
-# `until`
+# `until-async`
 
 Gracefully handle a Promise using `async`/`await`.
 
@@ -38,13 +38,13 @@ This library encapsulates the `try`/`catch` error handling in a utility function
 ### Install
 
 ```bash
-npm install @open-draft/until
+npm install until-async
 ```
 
 ### Usage
 
 ```js
-import { until } from '@open-draft/until'
+import { until } from 'until-async'
 
 async function getUserById(id) {
   const [error, data] = await until(() => fetchUser(id))
@@ -60,7 +60,7 @@ async function getUserById(id) {
 ### Usage with TypeScript
 
 ```ts
-import { until } from '@open-draft/until'
+import { until } from 'until-async'
 
 interface User {
   firstName: string
